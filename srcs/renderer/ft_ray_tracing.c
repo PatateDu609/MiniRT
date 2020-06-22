@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/25 14:54:12 by teyber            #+#    #+#             */
-/*   Updated: 2020/06/22 14:50:41 by user42           ###   ########.fr       */
+/*   Updated: 2020/06/22 15:24:36 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,13 +148,13 @@ void			ft_ray_tracing(t_data *data)
 	}
 	else
 	{
-		if (!(data->img_addr = (unsigned int *)ft_calloc(*s[0] * *s[1], 4)))
+		if (!(data->img_addr = (unsigned int *)ft_calloc(s[0] * s[1], 4)))
 			return ;
-		ft_draw(data, *s[0], *s[1]);
+		ft_draw(data, s[0], s[1]);
 		if (data->target == 1)
-			ft_save(data->img_addr, *s[0], *s[1]);
+			ft_save(data->img_addr, s[0], s[1]);
 		else if (data->target == 2)
-			ft_save_png(data->img_addr, *s[0], *s[1]);
+			ft_save_png(data->img_addr, s[0], s[1]);
 		free(data->img_addr);
 	}
 }
