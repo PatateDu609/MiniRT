@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/25 14:54:12 by teyber            #+#    #+#             */
-/*   Updated: 2020/06/22 13:59:02 by user42           ###   ########.fr       */
+/*   Updated: 2020/06/22 14:50:41 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,17 +133,17 @@ void			ft_set_size(t_data *data, int *width, int *height)
 
 void			ft_ray_tracing(t_data *data)
 {
-	int		*s[2];
+	int		s[2];
 	int		trash;
 
-	s[0] = &data->scene->resol->width;
-	s[1] = &data->scene->resol->height;
+	s[0] = data->scene->resol->width;
+	s[1] = data->scene->resol->height;
 	if (!data->target)
 	{
 		if (!(data->img_addr = (unsigned int *)mlx_get_data_addr(data->img,
 			&trash, &trash, &trash)))
 			return ;
-		ft_draw(data, *s[0], *s[1]);
+		ft_draw(data, s[0], s[1]);
 		mlx_put_image_to_window(data->mlx, data->win, data->img, 0, 0);
 	}
 	else
