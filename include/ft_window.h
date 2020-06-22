@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_window.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rbourgea <rbourgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/25 15:14:12 by teyber            #+#    #+#             */
-/*   Updated: 2020/04/23 19:36:46 by rbourgea         ###   ########.fr       */
+/*   Updated: 2020/06/22 13:55:28 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,5 +45,7 @@ void				ft_prev_light(t_data *data);
 
 void				ft_render(t_scene *scene, int file);
 void				ft_window(t_data *data);
+void				ft_set_size(t_data *data, int *width, int *height);
+
 
 #endif

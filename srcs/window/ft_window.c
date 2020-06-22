@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_window.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gboucett <gboucett@student.42.fr>          +#+  +:+       +#+        */
+/*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/25 15:14:00 by teyber            #+#    #+#             */
-/*   Updated: 2020/06/20 21:00:50 by gboucett         ###   ########.fr       */
+/*   Updated: 2020/06/22 13:58:26 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ void		ft_render(t_scene *scene, int file)
 	r = scene->resol;
 	if (!(data.mlx = mlx_init()))
 		return ;
+	ft_set_size(&data, &r->width, &r->height);
 	if (!(data.win = mlx_new_window(data.mlx, r->width, r->height, "miniRT")))
 		return ;
 	if (!(data.img = mlx_new_image(data.mlx, r->width, r->height)))
