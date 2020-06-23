@@ -163,7 +163,7 @@ $(LIBFT):
 $(MINILIBX):
 					make -C $(MINILIBX_PATH) -f $(MINILIBX_MAKE)
 
-bonus:
+bonus:				fclean
 					make $(NAME) ENABLEBONUSES=-DBONUS
 
 all:				bonus
