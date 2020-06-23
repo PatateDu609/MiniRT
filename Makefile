@@ -103,14 +103,14 @@ PARSER_SRCS			=	ft_parser					\
 						scene_add_elements_2		\
 						ft_add_caps
 
-DEBUG_SRCS			=	print_structs			\
-						print_structs_2			\
-						print_structs_3			\
-						print_structs_4			\
-						ft_print_selected
+# DEBUG_SRCS			=	print_structs			\
+# 						print_structs_2			\
+# 						print_structs_3			\
+# 						print_structs_4			\
+# 						ft_print_selected
 
+# SRCS_BASENAME		+=	$(addprefix $(PATH_DEBUG)/, $(DEBUG_SRCS))
 SRCS_BASENAME		+=	$(addprefix $(PATH_PARSER)/, $(PARSER_SRCS))
-SRCS_BASENAME		+=	$(addprefix $(PATH_DEBUG)/, $(DEBUG_SRCS))
 SRCS_BASENAME		+=	$(addprefix $(PATH_WINDOW)/, $(WINDOW_SRCS))
 SRCS_BASENAME		+=	$(addprefix $(PATH_MATHS)/, $(MATHS_SRCS))
 SRCS_BASENAME		+=	$(addprefix $(PATH_RENDERER)/, $(RENDERER_SRCS))

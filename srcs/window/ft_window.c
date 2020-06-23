@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/25 15:14:00 by teyber            #+#    #+#             */
-/*   Updated: 2020/06/22 13:58:26 by user42           ###   ########.fr       */
+/*   Updated: 2020/06/23 23:35:43 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,20 +43,8 @@ int			hook_keydown(int key_code, t_data *data)
 		++data->mode->arrow;
 		data->mode->arrow %= 3;
 	}
-	ft_print_selected(data);
 	return (1);
 }
-
-int			hook_loop(t_data *data)
-{
-	ft_print_selected(data);
-	return (1);
-}
-
-/*
-** Pour le debug:
-** mlx_loop_hook(data->mlx, hook_loop, data);
-*/
 
 void		ft_window(t_data *data)
 {
