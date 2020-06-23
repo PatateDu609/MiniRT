@@ -3,16 +3,37 @@
 /*                                                        :::      ::::::::   */
 /*   ft_parser_geometric.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gboucett <gboucett@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rbourgea <rbourgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/20 09:35:34 by gboucett          #+#    #+#             */
-/*   Updated: 2020/06/21 12:42:09 by gboucett         ###   ########.fr       */
+/*   Updated: 2020/06/23 19:48:45 by rbourgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_parser.h"
 #include "ft_printf.h"
 #include "ft_maths.h"
+
+#ifndef BONUS
+
+void		ft_parse_sphere(char *str, t_element *element)
+{
+	t_sphere	*result;
+
+	element->content = NULL;
+	if (!(result = (t_sphere *)malloc(sizeof(t_sphere))))
+		ft_print_error("Malloc failed", 0, 1);
+	if (!ft_read_coord(&str, result->origin, "Invalid coord for sphere",
+			result))
+		return ;
+	if (!ft_read_double(&str, &result->diameter, "Invalid diameter", result))
+		return ;
+	if (!ft_read_color(&str, &result->color, result))
+		return ;
+	element->content = result;
+}
+
+#else
 
 void		ft_parse_sphere(char *str, t_element *element)
 {
@@ -31,6 +52,8 @@ void		ft_parse_sphere(char *str, t_element *element)
 	ft_read_specular(&str, &result->spec_color, &result->shiny);
 	element->content = result;
 }
+
+#endif
 
 void		ft_parse_square(char *str, t_element *element)
 {
@@ -94,22 +117,4 @@ void		ft_parse_cylinder(char *str, t_element *element)
 	res->caps = !ft_strncmp("caps", str, max(ft_strlen(str), 4));
 	ft_vector_normalize(res->orient);
 	element->content = res;
-}
-
-void		ft_parse_triangle(char *str, t_element *element)
-{
-	t_triangle	*result;
-	int			i;
-
-	element->content = NULL;
-	if (!(result = (t_triangle *)malloc(sizeof(t_triangle))))
-		ft_print_error("Malloc failed", 0, 1);
-	i = 0;
-	while (i++ < 3)
-		if (!ft_read_coord(&str, result->coord[i - 1],
-			"Invalid coord for triangle", result))
-			return ;
-	if (!ft_read_color(&str, &result->color, result))
-		return ;
-	element->content = result;
 }

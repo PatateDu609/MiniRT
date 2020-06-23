@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_window.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
+/*   By: gboucett <gboucett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/25 15:14:12 by teyber            #+#    #+#             */
-/*   Updated: 2020/06/22 13:55:28 by user42           ###   ########.fr       */
+/*   Updated: 2020/06/23 23:12:09 by gboucett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,9 @@ void				ft_next_cam(t_data *data);
 void				ft_next_geo(t_data *data);
 void				ft_next_light(t_data *data);
 
-void				ft_prev_cam(t_data *data);
 void				ft_prev_geo(t_data *data);
 void				ft_prev_light(t_data *data);
+void				ft_prev_cam(t_data *data);
 
 void				ft_render(t_scene *scene, int file);
 void				ft_window(t_data *data);

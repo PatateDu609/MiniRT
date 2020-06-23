@@ -6,7 +6,7 @@
 /*   By: gboucett <gboucett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/11 17:04:45 by gboucett          #+#    #+#             */
-/*   Updated: 2020/06/21 22:12:49 by gboucett         ###   ########.fr       */
+/*   Updated: 2020/06/23 23:03:00 by gboucett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,8 @@ void			ft_specular_2(t_vector view,
 ** n[0] = view / n[1] = reflect / n[2] = lp / n[3] = intensity
 */
 
+#ifdef BONUS
+
 unsigned int	ft_specular(t_vector cp, t_light *light, t_intersect *intersect)
 {
 	double			shiny;
@@ -111,3 +113,30 @@ unsigned int	ft_specular(t_vector cp, t_light *light, t_intersect *intersect)
 	return (ft_rgb_to_hexa(min(255., max(0., n[3][0])), min(255., max(0.,
 		n[3][1])), min(255., max(0., n[3][2]))));
 }
+
+unsigned int	ft_color(t_scene *scene, t_intersect *intersect)
+{
+	t_list			*current;
+	t_light			*light;
+	unsigned int	color;
+	unsigned int	fcolor;
+	t_vector		cam_pos;
+
+	current = ft_lstfirst(scene->lights);
+	fcolor = ft_ambient(scene->ambient, intersect->element);
+	ft_memcpy(cam_pos, ((t_camera *)ft_get_element(scene->cameras))->view,
+		sizeof(t_vector));
+	while (current)
+	{
+		light = (t_light *)ft_get_element(current);
+		color = ft_lambertian(light, intersect);
+		if (ft_get_object_shiny(intersect->element) > 1)
+			color = ft_add_color(color, ft_specular(cam_pos, light, intersect));
+		fcolor = ft_add_color(fcolor, color * ft_shadow(scene, light,
+			intersect));
+		current = current->next;
+	}
+	return (fcolor);
+}
+
+#endif

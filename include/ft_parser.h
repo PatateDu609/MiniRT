@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_parser.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gboucett <gboucett@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rbourgea <rbourgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/18 22:42:36 by gboucett          #+#    #+#             */
-/*   Updated: 2020/06/21 22:48:24 by gboucett         ###   ########.fr       */
+/*   Updated: 2020/06/23 19:27:24 by rbourgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,12 +51,10 @@ int					ft_read_color(char **str, unsigned int *res, void *tfree);
 int					ft_read_ratio(char **current, double *result, void *tofree);
 
 int					ft_read_double(char **s, double *res, char *err, void *tf);
-void				ft_read_specular(char **s, unsigned int *col, double *shin);
 
 void				ft_parse_resolution(char *str, t_element *element);
 void				ft_parse_ambient_light(char *str, t_element *element);
 void				ft_parse_light(char *str, t_element *element);
-void				ft_parse_filter(char *str, t_element *element);
 void				ft_parse_camera(char *str, t_element *element);
 
 void				ft_parse_sphere(char *str, t_element *element);
@@ -64,16 +62,22 @@ void				ft_parse_square(char *str, t_element *element);
 void				ft_parse_plane(char *str, t_element *element);
 void				ft_parse_cylinder(char *str, t_element *element);
 void				ft_parse_triangle(char *str, t_element *element);
-void				ft_parse_circle(char *str, t_element *element);
-void				ft_parse_ellipsoid(char *str, t_element *element);
 
 int					ft_segment_len(char *line);
 char				*ft_parse_identifier(char **line);
 t_element			*ft_parse_line(char *line);
 int					ft_parser(char *scene_filename, t_scene *scene);
 
-void				ft_add_caps(t_scene *scene, t_cylinder *cylinder);
-
 void				ft_print_error(char *str, int sys, int block);
+
+# ifdef BONUS
+
+void				ft_read_specular(char **s, unsigned int *col, double *shin);
+void				ft_add_caps(t_scene *scene, t_cylinder *cylinder);
+void				ft_parse_circle(char *str, t_element *element);
+void				ft_parse_ellipsoid(char *str, t_element *element);
+void				ft_parse_filter(char *str, t_element *element);
+
+# endif
 
 #endif

@@ -6,11 +6,34 @@
 /*   By: gboucett <gboucett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 17:50:23 by gboucett          #+#    #+#             */
-/*   Updated: 2020/06/18 19:11:31 by gboucett         ###   ########.fr       */
+/*   Updated: 2020/06/23 23:02:13 by gboucett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_renderer.h"
+
+#ifndef BONUS
+
+unsigned int	ft_get_object_color(t_element *element)
+{
+	unsigned int	(*ft_get_truc_color[7])(void *);
+	int				id;
+
+	if ((id = ft_check_id(element->id)) == FT_PARSE_DEFAULT ||
+		id == FT_PARSE_LIGHT ||
+		id == FT_PARSE_CAMERA ||
+		id == FT_PARSE_AMBIENT_LIGHT ||
+		id == FT_PARSE_RESOLUTION)
+		return (0);
+	ft_get_truc_color[FT_PARSE_CYLINDER - 4] = ft_get_cylinder_color;
+	ft_get_truc_color[FT_PARSE_TRIANGLE - 4] = ft_get_triangle_color;
+	ft_get_truc_color[FT_PARSE_SQUARE - 4] = ft_get_square_color;
+	ft_get_truc_color[FT_PARSE_PLANE - 4] = ft_get_plane_color;
+	ft_get_truc_color[FT_PARSE_SPHERE - 4] = ft_get_sphere_color;
+	return (ft_get_truc_color[id - 4](element->content));
+}
+
+#else
 
 unsigned int	ft_get_object_color(t_element *element)
 {
@@ -74,3 +97,5 @@ unsigned int	ft_get_object_spec_color(t_element *element)
 	get_truc_spec_color[FT_PARSE_ELLIPSOID - 4] = ft_get_ellipsoid_spec_color;
 	return (get_truc_spec_color[id - 4](element->content));
 }
+
+#endif

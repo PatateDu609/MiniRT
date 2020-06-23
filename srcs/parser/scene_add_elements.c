@@ -6,11 +6,26 @@
 /*   By: gboucett <gboucett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/22 15:52:28 by gboucett          #+#    #+#             */
-/*   Updated: 2020/06/21 12:35:51 by gboucett         ###   ########.fr       */
+/*   Updated: 2020/06/23 22:42:11 by gboucett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_parser.h"
+
+#ifndef BONUS
+
+void		ft_add_geometrical(t_scene *scene, t_element *element)
+{
+	t_list		*new;
+
+	if (!element)
+		return ;
+	if (!(new = ft_lstnew(element)))
+		return ;
+	ft_lstadd_back(&scene->geometricals, new);
+}
+
+#else
 
 void		ft_add_geometrical(t_scene *scene, t_element *element)
 {
@@ -24,6 +39,8 @@ void		ft_add_geometrical(t_scene *scene, t_element *element)
 	if (ft_check_id(element->id) == FT_PARSE_CYLINDER && element->content)
 		ft_add_caps(scene, element->content);
 }
+
+#endif
 
 void		ft_add_light(t_scene *scene, t_element *light)
 {

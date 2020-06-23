@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_intersect_2.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
+/*   By: gboucett <gboucett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/11 17:04:45 by gboucett          #+#    #+#             */
-/*   Updated: 2020/06/21 23:24:04 by user42           ###   ########.fr       */
+/*   Updated: 2020/06/23 23:05:20 by gboucett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,8 @@ unsigned int	ft_shadow(t_scene *scene, t_light *light, t_intersect *inter)
 		ft_vector_norm2(l_p)));
 }
 
+#ifndef BONUS
+
 unsigned int	ft_color(t_scene *scene, t_intersect *intersect)
 {
 	t_list			*current;
@@ -82,11 +84,11 @@ unsigned int	ft_color(t_scene *scene, t_intersect *intersect)
 	{
 		light = (t_light *)ft_get_element(current);
 		color = ft_lambertian(light, intersect);
-		if (ft_get_object_shiny(intersect->element) > 1)
-			color = ft_add_color(color, ft_specular(cam_pos, light, intersect));
 		fcolor = ft_add_color(fcolor, color * ft_shadow(scene, light,
-			intersect));
+				intersect));
 		current = current->next;
 	}
 	return (fcolor);
 }
+
+#endif

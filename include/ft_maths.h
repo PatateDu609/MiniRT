@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_maths.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rbourgea <rbourgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gboucett <gboucett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/23 23:35:31 by teyber            #+#    #+#             */
-/*   Updated: 2020/06/09 16:30:12 by rbourgea         ###   ########.fr       */
+/*   Updated: 2020/06/23 22:47:24 by gboucett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,14 +45,19 @@ int					ft_resolv_triangle(void *object, t_ray *ray,
 		t_intersect *intersect);
 int					ft_resolv_plane(void *object, t_ray *ray,
 		t_intersect *intersect);
-int					ft_resolv_circle(void *object, t_ray *ray,
-		t_intersect *intersect);
-int					ft_resolv_ellipsoid(void *object, t_ray *ray,
-		t_intersect *intersect);
 
 t_ray				*ft_cast_cam_ray(t_scene *scene, int pcoord[2]);
 double				min(double a, double b);
 double				max(double a, double b);
 int					sign(double a);
+
+# ifdef BONUS
+
+int					ft_resolv_circle(void *object, t_ray *ray,
+		t_intersect *intersect);
+int					ft_resolv_ellipsoid(void *object, t_ray *ray,
+		t_intersect *intersect);
+
+# endif
 
 #endif

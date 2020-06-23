@@ -6,7 +6,7 @@
 /*   By: gboucett <gboucett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/18 19:06:37 by gboucett          #+#    #+#             */
-/*   Updated: 2020/06/22 15:40:51 by gboucett         ###   ########.fr       */
+/*   Updated: 2020/06/23 22:55:49 by gboucett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,17 @@ static int		ft_test_arg(int ac, char **av, char *arg)
 	return (1);
 }
 
+#ifndef BONUS
+
+static int		ft_issave(int ac, char **av)
+{
+	if (ft_test_arg(ac, av, "-save") || ft_test_arg(ac, av, "--save"))
+		return (1);
+	return (0);
+}
+
+#else
+
 static int		ft_issave(int ac, char **av)
 {
 	if (ft_test_arg(ac, av, "-png"))
@@ -39,6 +50,8 @@ static int		ft_issave(int ac, char **av)
 		return (1);
 	return (0);
 }
+
+#endif
 
 int				main(int ac, char **av)
 {
