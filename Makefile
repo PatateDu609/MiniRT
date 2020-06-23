@@ -37,6 +37,8 @@ PATH_MATHS			=	maths
 PATH_RENDERER		=	renderer
 
 RENDERER_SRCS		=	ft_ray_tracing			\
+						ft_filter				\
+						ft_draw					\
 						ft_save					\
 						ft_save_png				\
 						ft_intersect			\
@@ -86,9 +88,11 @@ WINDOW_SRCS			=	ft_window						\
 						ft_modify_struct_meta
 
 PARSER_SRCS			=	ft_parser					\
+						ft_parser_2					\
 						ft_parser_meta				\
 						ft_parser_meta_utils		\
 						ft_parser_geometric			\
+						ft_parser_geometric_2		\
 						ft_parser_geometric_other	\
 						ft_parser_geometric_utils	\
 						check_parse					\
@@ -146,7 +150,7 @@ endif
 
 
 $(PATH_OBJS)/%.o:	$(PATH_SRCS)/%.c
-					$(GCC) $(CFLAGS) -c $< -o $@
+					$(GCC) $(CFLAGS) $(ENABLEBONUSES) -c $< -o $@
 
 # $(NAME):			$(OBJS) $(LIBFT) $(MINILIBX)
 $(NAME):			$(OBJS) $(LIBFT)
@@ -160,8 +164,9 @@ $(MINILIBX):
 					make -C $(MINILIBX_PATH) -f $(MINILIBX_MAKE)
 
 bonus:
+					make $(NAME) ENABLEBONUSES=-DBONUS
 
-all:				$(NAME) bonus
+all:				bonus
 
 libft:				$(LIBFT)
 
@@ -177,6 +182,6 @@ fclean:				clean
 					make -C $(LIBFT_PATH) -f $(LIBFT_MAKE) fclean
 
 
-re:					fclean all
+re:					fclean $(NAME)
 
 .PHONY:				all clean fclean re gnl libft
