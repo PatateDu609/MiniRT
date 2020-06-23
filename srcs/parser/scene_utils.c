@@ -6,7 +6,7 @@
 /*   By: gboucett <gboucett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/19 17:56:33 by gboucett          #+#    #+#             */
-/*   Updated: 2020/01/27 13:54:50 by gboucett         ###   ########.fr       */
+/*   Updated: 2020/06/22 16:10:04 by gboucett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,9 @@ void		ft_destroy_scene(t_scene *scene)
 		free(scene->ambient);
 	if (scene->resol)
 		free(scene->resol);
+	scene->cameras = ft_lstfirst(scene->cameras);
+	scene->lights = ft_lstfirst(scene->lights);
+	scene->geometricals = ft_lstfirst(scene->geometricals);
 	ft_lstclear(&scene->cameras, &ft_del_element);
 	ft_lstclear(&scene->lights, &ft_del_element);
 	ft_lstclear(&scene->geometricals, &ft_del_element);

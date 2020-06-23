@@ -159,7 +159,9 @@ $(LIBFT):
 $(MINILIBX):
 					make -C $(MINILIBX_PATH) -f $(MINILIBX_MAKE)
 
-all:				$(NAME)
+bonus:
+
+all:				$(NAME) bonus
 
 libft:				$(LIBFT)
 
@@ -173,6 +175,7 @@ clean:
 fclean:				clean
 					$(RM) $(NAME) $(MINILIBX)
 					make -C $(LIBFT_PATH) -f $(LIBFT_MAKE) fclean
+
 
 re:					fclean all
 
