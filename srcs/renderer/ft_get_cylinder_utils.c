@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_get_cylinder_utils.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gboucett <gboucett@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rbourgea <rbourgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/18 17:50:21 by gboucett          #+#    #+#             */
-/*   Updated: 2020/03/11 21:42:57 by gboucett         ###   ########.fr       */
+/*   Created: 2020/02/18 17:50:21 by rbourgea          #+#    #+#             */
+/*   Updated: 2020/03/11 21:42:57 by rbourgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

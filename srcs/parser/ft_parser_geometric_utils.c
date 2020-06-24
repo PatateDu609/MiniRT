@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_parser_geometric_utils.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gboucett <gboucett@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rbourgea <rbourgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/21 17:24:15 by gboucett          #+#    #+#             */
-/*   Updated: 2020/06/23 22:44:40 by gboucett         ###   ########.fr       */
+/*   Created: 2019/12/21 17:24:15 by rbourgea          #+#    #+#             */
+/*   Updated: 2020/06/23 22:44:40 by rbourgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

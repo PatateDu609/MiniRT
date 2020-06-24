@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_modify_struct_geometricals.c                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gboucett <gboucett@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rbourgea <rbourgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/01 14:59:03 by gboucett          #+#    #+#             */
-/*   Updated: 2020/02/20 17:48:13 by gboucett         ###   ########.fr       */
+/*   Created: 2020/02/01 14:59:03 by rbourgea          #+#    #+#             */
+/*   Updated: 2020/02/20 17:48:13 by rbourgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

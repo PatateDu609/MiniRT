@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_alter_unique_utils.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gboucett <gboucett@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rbourgea <rbourgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/28 21:36:49 by gboucett          #+#    #+#             */
-/*   Updated: 2020/02/01 17:21:24 by gboucett         ###   ########.fr       */
+/*   Created: 2020/01/28 21:36:49 by rbourgea          #+#    #+#             */
+/*   Updated: 2020/02/01 17:21:24 by rbourgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

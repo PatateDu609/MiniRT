@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_modify_struct_meta.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gboucett <gboucett@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rbourgea <rbourgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/01 14:59:05 by gboucett          #+#    #+#             */
-/*   Updated: 2020/02/01 20:06:30 by gboucett         ###   ########.fr       */
+/*   Created: 2020/02/01 14:59:05 by rbourgea          #+#    #+#             */
+/*   Updated: 2020/02/01 20:06:30 by rbourgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

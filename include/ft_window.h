@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_window.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gboucett <gboucett@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rbourgea <rbourgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/25 15:14:12 by teyber            #+#    #+#             */
-/*   Updated: 2020/06/23 23:12:09 by gboucett         ###   ########.fr       */
+/*   Updated: 2020/06/24 10:02:10 by rbourgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,5 @@ void				ft_prev_cam(t_data *data);
 void				ft_render(t_scene *scene, int file);
 void				ft_window(t_data *data);
 void				ft_set_size(t_data *data, int *width, int *height);
-
 
 #endif

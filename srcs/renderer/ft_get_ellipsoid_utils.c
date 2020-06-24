@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_get_ellipsoid_utils.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gboucett <gboucett@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rbourgea <rbourgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/18 17:50:30 by gboucett          #+#    #+#             */
-/*   Updated: 2020/03/11 21:45:29 by gboucett         ###   ########.fr       */
+/*   Created: 2020/02/18 17:50:30 by rbourgea          #+#    #+#             */
+/*   Updated: 2020/03/11 21:45:29 by rbourgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
