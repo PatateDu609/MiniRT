@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_parser_meta.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rbourgea <rbourgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gboucett <gboucett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/20 08:19:56 by rbourgea          #+#    #+#             */
-/*   Updated: 2020/06/21 12:42:40 by rbourgea         ###   ########.fr       */
+/*   Updated: 2020/06/25 19:32:49 by gboucett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ void		ft_parse_camera(char *str, t_element *element)
 		return ;
 	if (!ft_check_fov(str, &result->fov))
 	{
-		ft_print_error("Invalid fov", 0, 0);
+		ft_print_error("Invalid fov", 0, 1);
 		free(result);
 		return ;
 	}
