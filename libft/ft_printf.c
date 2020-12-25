@@ -6,25 +6,26 @@
 /*   By: gboucett <gboucett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/14 19:14:16 by gboucett          #+#    #+#             */
-/*   Updated: 2019/11/28 21:38:23 by gboucett         ###   ########.fr       */
+/*   Updated: 2020/12/24 21:18:27 by gboucett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void			ft_update_flags(t_flags *flags, int waiting)
+void	ft_update_flags(t_flags *flags, int waiting)
 {
 	if (waiting == W_NOTHING && flags->length < 0)
 	{
 		flags->length *= -1;
 		flags->alignment = F_LEFT;
-		flags->prefix = (flags->prefix == F_ZERO) ? F_SPACE : F_NO_PREFIX;
+		flags->prefix = ft_ternaryi(flags->prefix == F_ZERO, F_SPACE,
+				F_NO_PREFIX);
 	}
 	if (flags->precision == F_DEF_PREC && waiting == W_PRECISION)
 		flags->precision = 0;
 }
 
-static int		ft_print(t_flags flags, va_list args)
+static int	ft_print(t_flags flags, va_list args)
 {
 	int		result;
 	char	conv;
@@ -32,7 +33,8 @@ static int		ft_print(t_flags flags, va_list args)
 	conv = flags.conversion;
 	result = 0;
 	if (conv == 'c' || conv == '%')
-		result += ft_putchar((conv == '%' ? '%' : va_arg(args, int)), flags);
+		result += ft_putchar(ft_ternaryi(conv == '%', '%', va_arg(args, int)),
+				flags);
 	else if (conv == 's')
 	{
 		result += ft_putstrr(va_arg(args, const char *), flags);
@@ -48,7 +50,7 @@ static int		ft_print(t_flags flags, va_list args)
 	return (result);
 }
 
-int				ft_printf(const char *str, ...)
+int	ft_printf(const char *str, ...)
 {
 	va_list		args;
 	int			printed;

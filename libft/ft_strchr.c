@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gboucett <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: gboucett <gboucett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 23:17:03 by gboucett          #+#    #+#             */
-/*   Updated: 2019/11/04 23:30:57 by gboucett         ###   ########.fr       */
+/*   Updated: 2020/12/24 22:40:03 by gboucett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,5 +16,7 @@ char	*ft_strchr(const char *str, int c)
 {
 	while (*str && *str != (char)c)
 		str++;
-	return ((*str == (char)c) ? (char*)str : NULL);
+	if (*str == c)
+		return ((char *)str);
+	return (NULL);
 }

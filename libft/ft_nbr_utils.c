@@ -6,18 +6,18 @@
 /*   By: gboucett <gboucett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/18 22:24:55 by gboucett          #+#    #+#             */
-/*   Updated: 2019/11/26 21:22:24 by gboucett         ###   ########.fr       */
+/*   Updated: 2020/12/24 21:15:32 by gboucett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		ft_size_base(long long n, size_t size, int base)
+int	ft_size_base(long long n, size_t size, int base)
 {
 	if (n < 0)
 	{
 		size++;
-		n = (n < 0) ? -n : n;
+		n = ft_ternaryi(n < 0, -n, n);
 	}
 	if (n == 0 && !size)
 		return (1);
@@ -33,17 +33,17 @@ void	ft_print_nbr(unsigned int n)
 	ft_putchar_fd(n % 10 + '0', 1);
 }
 
-int		ft_size_prefix(t_flags flags, int len)
+int	ft_size_prefix(t_flags flags, int len)
 {
 	int		size;
 	int		precision;
 
-	precision = (flags.precision == F_DEF_PREC) ? 1 : flags.precision;
+	precision = ft_ternaryi(flags.precision == F_DEF_PREC, 1, flags.precision);
 	if (len >= precision)
-		size = (flags.length <= len) ? len : flags.length;
+		size = ft_ternaryi(flags.length <= len, len, flags.length);
 	else
-		size = (precision <= flags.length) ? flags.length : precision;
-	return (size - (precision < len ? len : precision));
+		size = ft_ternaryi(precision <= flags.length, flags.length, precision);
+	return (size - ft_ternaryi(precision < len, len, precision));
 }
 
 void	ft_print_prefix(t_flags flags, int len)

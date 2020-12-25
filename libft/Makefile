@@ -30,6 +30,7 @@ SRCS_BASENAME		=	memset				\
 						tolower				\
 						strchr				\
 						strrchr				\
+						strcmp				\
 						strncmp				\
 						strlcpy				\
 						strlcat				\
@@ -39,6 +40,7 @@ SRCS_BASENAME		=	memset				\
 						strdup				\
 						substr				\
 						strjoin				\
+						strjoin_arr			\
 						strtrim				\
 						split				\
 						itoa				\
@@ -56,7 +58,13 @@ SRCS_BASENAME		=	memset				\
 						lstdelone_bonus		\
 						lstclear_bonus		\
 						lstiter_bonus		\
-						lstmap_bonus
+						lstmap_bonus		\
+						btree_apply_suffix	\
+						btree_apply_infix	\
+						btree_apply_prefix	\
+						btree_create_node	\
+						ternary				\
+						assign				\
 
 GNL_SRCS			=	get_next_line		\
 						get_next_line_utils
@@ -77,7 +85,7 @@ PRINTF_SRCS			=	putptr		\
 ################################################################################
 RM					=	rm -f
 GCC					=	gcc
-CFLAGS				=	-Wall -Wextra -Werror -I$(PATH_INCLUDES)
+CFLAGS				=	-Wall -Wextra -Werror -I$(PATH_INCLUDES) -g
 
 ################################################################################
 #                         DO NOT MODIFY BELOW THIS POINT                       #
@@ -98,7 +106,7 @@ $(PATH_OBJS)/%.o:	$(PATH_SRCS)/%.c
 					$(GCC) $(CFLAGS) -D BUFFER_SIZE=32 -c $< -o $@
 
 $(NAME):			$(OBJS)
-					ar rcs $(NAME) $(OBJS)
+					@ar rcs $(NAME) $(OBJS)
 
 all:				$(NAME)
 
@@ -107,6 +115,8 @@ clean:
 
 fclean:				clean
 					$(RM) $(NAME)
+
+bonus:				all
 
 re:					fclean all
 

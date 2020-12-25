@@ -6,13 +6,13 @@
 /*   By: gboucett <gboucett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/14 20:33:41 by gboucett          #+#    #+#             */
-/*   Updated: 2019/11/22 21:13:26 by gboucett         ###   ########.fr       */
+/*   Updated: 2020/12/24 21:50:15 by gboucett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int		ft_special_len(const char *str, int precision)
+static int	ft_special_len(const char *str, int precision)
 {
 	int		len;
 	int		true_len;
@@ -26,9 +26,9 @@ static int		ft_special_len(const char *str, int precision)
 	return (len);
 }
 
-static void		ft_disp(int len, const char *str, t_flags flags)
+static void	ft_disp(int len, const char *str, t_flags flags)
 {
-	int spaces;
+	int	spaces;
 
 	spaces = 0;
 	if (flags.alignment == F_RIGHT)
@@ -51,7 +51,7 @@ static void		ft_disp(int len, const char *str, t_flags flags)
 	}
 }
 
-int				ft_putstrr(const char *str, t_flags flags)
+int	ft_putstrr(const char *str, t_flags flags)
 {
 	int		len;
 
@@ -63,7 +63,7 @@ int				ft_putstrr(const char *str, t_flags flags)
 	if (len || !flags.length_def)
 	{
 		ft_disp(len, str, flags);
-		return ((flags.length < len) ? len : flags.length);
+		return (ft_ternaryi(flags.length < len, len, flags.length));
 	}
 	return (0);
 }

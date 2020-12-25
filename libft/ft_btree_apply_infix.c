@@ -1,29 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   ft_btree_apply_infix.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gboucett <gboucett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/04 23:33:49 by gboucett          #+#    #+#             */
-/*   Updated: 2020/12/24 22:18:16 by gboucett         ###   ########.fr       */
+/*   Created: 2020/07/07 18:01:07 by gboucett          #+#    #+#             */
+/*   Updated: 2020/07/07 18:26:39 by gboucett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_strncmp(const char *s1, const char *s2, size_t len)
+void	ft_btree_apply_infix(t_btree *root, void (*f)(void *))
 {
-	unsigned int	i;
-
-	i = 0;
-	if (len == 0)
-		return (len);
-	while (s1[i] && s2[i] && i < len - 1)
-	{
-		if (s1[i] != s2[i])
-			return ((unsigned char)s1[i] - (unsigned char)s2[i]);
-		i++;
-	}
-	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+	if (!root || !f)
+		return ;
+	ft_btree_apply_infix(root->left, f);
+	f(root->item);
+	ft_btree_apply_infix(root->right, f);
 }

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_tolower.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gboucett <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: gboucett <gboucett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 22:42:07 by gboucett          #+#    #+#             */
-/*   Updated: 2019/11/04 22:45:04 by gboucett         ###   ########.fr       */
+/*   Updated: 2020/12/24 22:27:19 by gboucett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_tolower(int c)
+int	ft_tolower(int c)
 {
-	return (('A' <= c && c <= 'Z') ? c + 32 : c);
+	return (ft_ternaryi('A' <= c && c <= 'Z', c + 32, c));
 }

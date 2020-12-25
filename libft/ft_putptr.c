@@ -6,13 +6,13 @@
 /*   By: gboucett <gboucett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/14 18:55:17 by gboucett          #+#    #+#             */
-/*   Updated: 2019/11/23 22:00:43 by gboucett         ###   ########.fr       */
+/*   Updated: 2020/12/24 21:49:16 by gboucett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int				ft_putptr(void *ptr, t_flags flags)
+int	ft_putptr(void *ptr, t_flags flags)
 {
 	unsigned long	p;
 	int				result;
@@ -20,7 +20,7 @@ int				ft_putptr(void *ptr, t_flags flags)
 	int				size;
 
 	p = (unsigned long)ptr;
-	size = ft_size_base(p, 2, 16) + (!p ? 1 : 0);
+	size = ft_size_base(p, 2, 16) + ft_ternaryi(!p, 1, 0);
 	if (flags.alignment == F_RIGHT)
 	{
 		spaces = ft_size_prefix(flags, size);
@@ -33,5 +33,5 @@ int				ft_putptr(void *ptr, t_flags flags)
 	ft_puthexa(1, p, &result, flags);
 	if (flags.alignment == F_RIGHT)
 		result += spaces;
-	return (result + (1 ? 2 : 0));
+	return (result + 2);
 }

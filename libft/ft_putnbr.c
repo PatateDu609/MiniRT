@@ -6,22 +6,22 @@
 /*   By: gboucett <gboucett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/14 20:33:57 by gboucett          #+#    #+#             */
-/*   Updated: 2019/11/30 23:04:37 by gboucett         ###   ########.fr       */
+/*   Updated: 2020/12/24 21:41:59 by gboucett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int		ft_maxcar_prec_null(int n, t_flags flags, int len, int mode)
+static int	ft_maxcar_prec_null(int n, t_flags flags, int len, int mode)
 {
 	if (mode)
 	{
 		if (flags.precision == 0 && n == 0)
-			return (flags.length_def ? 0 : flags.length);
+			return (ft_ternaryi(flags.length_def, 0, flags.length));
 		else if (flags.length_def && flags.precision == F_DEF_PREC)
 			return (len);
-		else if (flags.precision != F_DEF_PREC &&
-				flags.length <= flags.precision)
+		else if (flags.precision != F_DEF_PREC
+			&& flags.length <= flags.precision)
 			return (flags.precision + (n < 0));
 		return (flags.length);
 	}
@@ -36,7 +36,7 @@ static int		ft_maxcar_prec_null(int n, t_flags flags, int len, int mode)
 	}
 }
 
-static void		ft_print_spaces(int n, t_flags flags, int len, int fix)
+static void	ft_print_spaces(int n, t_flags flags, int len, int fix)
 {
 	int		total;
 	int		spaces;
@@ -46,24 +46,26 @@ static void		ft_print_spaces(int n, t_flags flags, int len, int fix)
 	if (fix <= 0)
 	{
 		abs_len = len - (n < 0);
-		total = flags.length - (flags.precision <= abs_len ? len
-				: flags.precision + (n < 0));
+		total = flags.length - ft_ternaryi(flags.precision <= abs_len, len,
+				flags.precision + (n < 0));
 		while (spaces < total)
 		{
-			ft_putchar_fd(flags.prefix == F_ZERO &&
-						flags.precision == F_DEF_PREC ? '0' : ' ', 1);
+			ft_putchar_fd(ft_ternaryi(flags.prefix == F_ZERO
+					&& flags.precision == F_DEF_PREC, '0', ' '), 1);
 			spaces++;
 		}
 	}
 	else
+	{
 		while (spaces < fix)
 		{
 			write(1, " ", 1);
 			spaces++;
 		}
+	}
 }
 
-static void		ft_print_zeroes_d(int len, t_flags flags, int sign)
+static void	ft_print_zeroes_d(int len, t_flags flags, int sign)
 {
 	int		zeroes;
 
@@ -75,7 +77,7 @@ static void		ft_print_zeroes_d(int len, t_flags flags, int sign)
 	}
 }
 
-static void		ft_print_pre_nbr(int n, t_flags flags, int len)
+static void	ft_print_pre_nbr(int n, t_flags flags, int len)
 {
 	if (flags.alignment == F_RIGHT)
 	{
@@ -97,7 +99,7 @@ static void		ft_print_pre_nbr(int n, t_flags flags, int len)
 	}
 }
 
-int				ft_putnbr(int n, t_flags flags)
+int	ft_putnbr(int n, t_flags flags)
 {
 	int		maxcar;
 	int		len;
@@ -117,8 +119,8 @@ int				ft_putnbr(int n, t_flags flags)
 			ft_print_nbr(n < 0 ? -n : n);
 		ft_print_spaces(n, flags, len, ft_maxcar_prec_null(n, flags, len, 0));
 	}
-	if (flags.precision == 0 && n == 0 &&
-		(flags.length_def || flags.length == 0))
+	if (flags.precision == 0 && n == 0
+		&& (flags.length_def || flags.length == 0))
 		return (0);
-	return (len <= maxcar ? maxcar : len);
+	return (ft_ternaryi(len <= maxcar, maxcar, len));
 }

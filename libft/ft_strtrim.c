@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gboucett <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: gboucett <gboucett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 17:47:24 by gboucett          #+#    #+#             */
-/*   Updated: 2019/11/11 00:26:45 by gboucett         ###   ########.fr       */
+/*   Updated: 2020/12/25 12:13:47 by gboucett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static unsigned int		ft_trimedlen(const char *s1, const char *set)
+static unsigned int	ft_trimedlen(const char *s1, const char *set)
 {
 	unsigned int	size;
 	const char		*s;
@@ -35,7 +35,7 @@ static unsigned int		ft_trimedlen(const char *s1, const char *set)
 	return (size + 1);
 }
 
-char					*ft_strtrim(const char *s1, const char *set)
+char	*ft_strtrim(const char *s1, const char *set)
 {
 	unsigned int	size;
 	char			*result;
@@ -46,7 +46,7 @@ char					*ft_strtrim(const char *s1, const char *set)
 	if (!set || !*set)
 		return (ft_strdup(s1));
 	size = ft_trimedlen(s1, set);
-	if (!(result = (char *)malloc(size + 1)))
+	if (!ft_assign((void **)&result, (char *)malloc(size + 1)))
 		return (NULL);
 	while (*s1 && ft_strchr(set, *s1))
 		s1++;

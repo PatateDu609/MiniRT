@@ -6,7 +6,7 @@
 /*   By: gboucett <gboucett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/20 14:52:31 by gboucett          #+#    #+#             */
-/*   Updated: 2019/12/18 23:16:48 by gboucett         ###   ########.fr       */
+/*   Updated: 2020/12/25 13:06:00 by gboucett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,10 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdio.h>
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 4096
+# endif
 
 char	*ft_strdup_sp(const char *s1);
 void	*ft_memmove_sp(void *dst, const void *src, size_t len);

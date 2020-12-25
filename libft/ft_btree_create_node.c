@@ -1,29 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   ft_btree_create_node.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gboucett <gboucett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/04 23:33:49 by gboucett          #+#    #+#             */
-/*   Updated: 2020/12/24 22:18:16 by gboucett         ###   ########.fr       */
+/*   Created: 2020/07/07 17:22:37 by gboucett          #+#    #+#             */
+/*   Updated: 2020/12/23 17:43:24 by gboucett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_strncmp(const char *s1, const char *s2, size_t len)
+t_btree	*ft_btree_create_node(void *item)
 {
-	unsigned int	i;
+	t_btree		*node;
 
-	i = 0;
-	if (len == 0)
-		return (len);
-	while (s1[i] && s2[i] && i < len - 1)
-	{
-		if (s1[i] != s2[i])
-			return ((unsigned char)s1[i] - (unsigned char)s2[i]);
-		i++;
-	}
-	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+	if (!item)
+		return (NULL);
+	node = (t_btree *)ft_calloc(1, sizeof(t_btree));
+	if (!node)
+		return (NULL);
+	node->item = item;
+	return (node);
 }

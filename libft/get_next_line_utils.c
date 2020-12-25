@@ -6,13 +6,13 @@
 /*   By: gboucett <gboucett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/20 14:52:29 by gboucett          #+#    #+#             */
-/*   Updated: 2019/12/19 19:29:20 by gboucett         ###   ########.fr       */
+/*   Updated: 2020/12/24 22:31:19 by gboucett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-void			*ft_memmove_sp(void *dst, const void *src, size_t len)
+void	*ft_memmove_sp(void *dst, const void *src, size_t len)
 {
 	char	*srcc;
 	char	*dstc;
@@ -40,12 +40,13 @@ static size_t	ft_strlen_sp(const char *str)
 	return (len);
 }
 
-char			*ft_strdup_sp(const char *s1)
+char	*ft_strdup_sp(const char *s1)
 {
 	char	*result;
 	size_t	i;
 
-	if (!(result = (char *)malloc(sizeof(char) * (ft_strlen_sp(s1) + 1))))
+	result = (char *)malloc(sizeof(char) * (ft_strlen_sp(s1) + 1));
+	if (!result)
 		return (NULL);
 	i = 0;
 	while (i++ < ft_strlen_sp(s1))
@@ -54,7 +55,7 @@ char			*ft_strdup_sp(const char *s1)
 	return (result);
 }
 
-char			*ft_strjoin_sp(const char *s1, const char *s2)
+char	*ft_strjoin_sp(const char *s1, const char *s2)
 {
 	size_t	size;
 	char	*result;
@@ -65,7 +66,8 @@ char			*ft_strjoin_sp(const char *s1, const char *s2)
 		size += ft_strlen_sp(s1);
 	if (s2)
 		size += ft_strlen_sp(s2);
-	if (!(result = (char *)malloc(sizeof(char) * (size + 1))))
+	result = (char *)malloc(sizeof(char) * (size + 1));
+	if (!result)
 		return (NULL);
 	s = result;
 	if (s1)
@@ -78,12 +80,14 @@ char			*ft_strjoin_sp(const char *s1, const char *s2)
 	return (result);
 }
 
-int				ft_strchr_sp(char *buffer, char chr)
+int	ft_strchr_sp(char *buffer, char chr)
 {
 	int		pos;
 
 	pos = 0;
 	while (buffer[pos] && buffer[pos] != chr)
 		pos++;
-	return (buffer[pos] == chr ? pos + 1 : -1);
+	if (buffer[pos] == chr)
+		return (pos + 1);
+	return (-1);
 }

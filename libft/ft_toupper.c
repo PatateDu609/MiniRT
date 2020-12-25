@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_toupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gboucett <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: gboucett <gboucett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 22:37:53 by gboucett          #+#    #+#             */
-/*   Updated: 2019/11/04 23:32:04 by gboucett         ###   ########.fr       */
+/*   Updated: 2020/12/24 22:26:51 by gboucett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_toupper(int c)
+int	ft_toupper(int c)
 {
-	return (('a' <= c && c <= 'z') ? c - 32 : c);
+	return (ft_ternaryi('a' <= c && c <= 'z', c - 32, c));
 }

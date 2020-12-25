@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rbourgea <rbourgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gboucett <gboucett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 19:12:17 by gboucett          #+#    #+#             */
-/*   Updated: 2020/06/09 16:30:26 by rbourgea         ###   ########.fr       */
+/*   Updated: 2020/12/23 17:17:14 by gboucett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,40 +58,40 @@
 **	prefix		: is there any prefix (zero(1) or space(2) or both(3)) ?
 **	conversion	: conversion type (s, c, d, i, u, X, x, p, %)
 */
-typedef struct	s_flags
+typedef struct s_flags
 {
-	int			alignment;
-	int			length;
-	int			length_def;
-	int			precision;
-	int			prefix;
-	char		conversion;
-}				t_flags;
+	int		alignment;
+	int		length;
+	int		length_def;
+	int		precision;
+	int		prefix;
+	char	conversion;
+}	t_flags;
 
-int				ft_putchar(char c, t_flags flags);
-int				ft_putstrr(const char *str, t_flags flags);
-void			ft_putunsigned(unsigned int n, int *size, t_flags flags);
-int				ft_putnbr(int n, t_flags flags);
-void			ft_puthexa(int mode, unsigned long n, int *size, t_flags flags);
-int				ft_putptr(void *ptr, t_flags flags);
+int		ft_putchar(char c, t_flags flags);
+int		ft_putstrr(const char *str, t_flags flags);
+void	ft_putunsigned(unsigned int n, int *size, t_flags flags);
+int		ft_putnbr(int n, t_flags flags);
+void	ft_puthexa(int mode, unsigned long n, int *size, t_flags flags);
+int		ft_putptr(void *ptr, t_flags flags);
 
-void			ft_print_nbr(unsigned int n);
-int				ft_size_base(long long n, size_t size, int base);
-void			ft_print_prefix(t_flags flags, int len);
-void			ft_print_zeroes(int len, int precision);
-int				ft_size_prefix(t_flags flags, int len);
+void	ft_print_nbr(unsigned int n);
+int		ft_size_base(long long n, size_t size, int base);
+void	ft_print_prefix(t_flags flags, int len);
+void	ft_print_zeroes(int len, int precision);
+int		ft_size_prefix(t_flags flags, int len);
 
-int				ft_isformat_or_flag(char c);
-int				ft_isformat(char c);
-int				ft_isflag(char c);
+int		ft_isformat_or_flag(char c);
+int		ft_isformat(char c);
+int		ft_isflag(char c);
 
-void			ft_flag_numbers(t_flags *flags, const char **str, int *waiting);
-void			ft_prefix(t_flags *flags, char current);
-void			ft_alignment(t_flags *flags);
-void			ft_star(t_flags *flags, int *waiting, va_list args);
-t_flags			ft_parse(const char **str, va_list args);
-void			ft_update_flags(t_flags *flags, int waiting);
+void	ft_flag_numbers(t_flags *flags, const char **str, int *waiting);
+void	ft_prefix(t_flags *flags, char current);
+void	ft_alignment(t_flags *flags);
+void	ft_star(t_flags *flags, int *waiting, va_list args);
+t_flags	ft_parse(const char **str, va_list args);
+void	ft_update_flags(t_flags *flags, int waiting);
 
-int				ft_printf(const char *str, ...);
+int		ft_printf(const char *str, ...);
 
 #endif
