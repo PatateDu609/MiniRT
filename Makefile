@@ -21,9 +21,6 @@ LIBFT				=	$(PATH_LIBS)/libft.a
 ################################################################################
 #                                   libs infos                                 #
 ################################################################################
-MINILIBX_PATH		=	minilibx
-MINILIBX_MAKE		=	Makefile
-MINILIBX			=	$(PATH_LIBS)/libmlx.a
 
 LIBATTOPNG_PATH		=	libattopng
 
@@ -78,14 +75,6 @@ MATHS_SRCS			=	ft_vector_normalize		\
 						ft_ray_point
 
 WINDOW_SRCS			=	ft_window						\
-						ft_next_obj						\
-						ft_prev_obj						\
-						ft_arrows						\
-						ft_arrows_2						\
-						ft_alter_unique_utils			\
-						ft_move_xyz						\
-						ft_modify_struct_geometricals	\
-						ft_modify_struct_meta
 
 PARSER_SRCS			=	ft_parser					\
 						ft_parser_2					\
@@ -123,15 +112,11 @@ SRCS_BASENAME		+=	main			\
 ################################################################################
 RM					=	rm -f
 GCC					=	gcc
-CFLAGS				=	-I$(PATH_INCLUDES) -I$(MINILIBX_PATH) -I$(LIBATTOPNG_PATH) -g
+CFLAGS				=	-I$(PATH_INCLUDES) -I$(LIBATTOPNG_PATH) -g3
 LDFLAGS				=	-L$(PATH_LIBS) -lft -lm
 
-# GRAPHICAL LDFLAGS (for mac os):
-# LDFLAGS				+=	-L$(MINILIBX_PATH) -lmlx -framework OpenGL -framework AppKit
-# GRAPHICAL LDFLAGS (for linux):
-LDFLAGS				+=	-lmlx -lX11 -lXext
 # DEBUG LDFLAGS :
-LDFLAGS				+=	-fsanitize=address -g -fstack-protector
+LDFLAGS				+=	-g3 -ggdb
 # IF SYSTEM ON LINUX, uncomment following:
 # LDFLAGS				+=	-fsanitize=leak
 
@@ -152,7 +137,6 @@ endif
 $(PATH_OBJS)/%.o:	$(PATH_SRCS)/%.c
 					$(GCC) $(CFLAGS) -c $< -o $@
 
-# $(NAME):			$(OBJS) $(LIBFT) $(MINILIBX)
 $(NAME):			$(OBJS) $(LIBFT)
 					$(GCC) -c $(LIBATTOPNG_PATH)/libattopng.c -o $(LIBATTOPNG_PATH)/libattopng.o
 					$(GCC) $(OBJS) $(LIBATTOPNG_PATH)/libattopng.o -o $(NAME) $(LDFLAGS)
@@ -167,15 +151,12 @@ all:				$(NAME)
 
 libft:				$(LIBFT)
 
-mlx:				$(MINILIBX)
-
 clean:
 					$(RM) $(OBJS)
 					make -C $(LIBFT_PATH) -f $(LIBFT_MAKE) clean
-					make -C $(MINILIBX_PATH) -f $(MINILIBX_MAKE) clean
 
 fclean:				clean
-					$(RM) $(NAME) $(MINILIBX)
+					$(RM) $(NAME)
 					make -C $(LIBFT_PATH) -f $(LIBFT_MAKE) fclean
 
 

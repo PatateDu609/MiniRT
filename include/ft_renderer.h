@@ -15,7 +15,6 @@
 
 # include "ft_parser.h"
 # include "ft_maths.h"
-# include "mlx.h"
 # include <pthread.h>
 
 void			ft_ray_tracing(t_data *data);

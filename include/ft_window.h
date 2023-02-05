@@ -14,7 +14,6 @@
 # define FT_WINDOW_H
 
 # include "ft_parser.h"
-# include "mlx.h"
 # include "ft_defs.h"
 # include "ft_renderer.h"
 

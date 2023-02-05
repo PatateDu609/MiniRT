@@ -35,10 +35,8 @@ static int		ft_test_arg(int ac, char **av, char *arg)
 static int		ft_issave(int ac, char **av)
 {
 	if (ft_test_arg(ac, av, "-png"))
-		return (2);
-	else if (ft_test_arg(ac, av, "-save") || ft_test_arg(ac, av, "--save"))
 		return (1);
-	return (0);
+	return 0;
 }
 
 int				main(int ac, char **av)
@@ -49,19 +47,24 @@ int				main(int ac, char **av)
 	e = "A scene needs at least a camera, an ambiance light and a resolution";
 	if (ac == 1)
 		return (1);
+	int issave = ft_issave(ac, av);
+
+
 	scene = ft_init_scene();
 	g_program_name = strrchr(av[0], '/') + 1;
+
 	if (ft_parser(av[1], scene) <= 0)
 	{
 		ft_destroy_scene(scene);
 		return (1);
 	}
+
 	if (!ft_check_scene(scene))
 	{
 		ft_destroy_scene(scene);
 		ft_print_error(e, 0, 1);
 	}
-	ft_render(scene, ft_issave(ac, av));
+	ft_render(scene, issave);
 	ft_destroy_scene(scene);
 	return (0);
 }
