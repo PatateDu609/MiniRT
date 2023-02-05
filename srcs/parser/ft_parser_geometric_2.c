@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "ft_parser.h"
-#include "ft_printf.h"
 #include "ft_maths.h"
 
 void		ft_parse_triangle(char *str, t_element *element)

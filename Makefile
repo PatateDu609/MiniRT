@@ -123,7 +123,7 @@ SRCS_BASENAME		+=	main			\
 ################################################################################
 RM					=	rm -f
 GCC					=	gcc
-CFLAGS				=	-Wall -Wextra -Werror -I$(PATH_INCLUDES) -I$(MINILIBX_PATH) -I$(LIBATTOPNG_PATH) -g
+CFLAGS				=	-I$(PATH_INCLUDES) -I$(MINILIBX_PATH) -I$(LIBATTOPNG_PATH) -g
 LDFLAGS				=	-L$(PATH_LIBS) -lft -lm
 
 # GRAPHICAL LDFLAGS (for mac os):
@@ -150,7 +150,7 @@ endif
 
 
 $(PATH_OBJS)/%.o:	$(PATH_SRCS)/%.c
-					$(GCC) $(CFLAGS) $(ENABLEBONUSES) -c $< -o $@
+					$(GCC) $(CFLAGS) -c $< -o $@
 
 # $(NAME):			$(OBJS) $(LIBFT) $(MINILIBX)
 $(NAME):			$(OBJS) $(LIBFT)
@@ -163,10 +163,7 @@ $(LIBFT):
 $(MINILIBX):
 					make -C $(MINILIBX_PATH) -f $(MINILIBX_MAKE)
 
-bonus:				fclean
-					make $(NAME) ENABLEBONUSES=-DBONUS
-
-all:				bonus
+all:				$(NAME)
 
 libft:				$(LIBFT)
 

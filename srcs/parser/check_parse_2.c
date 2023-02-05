@@ -16,7 +16,7 @@ int			ft_check_fov(char *str, double *fov)
 {
 	if (!ft_special_strchr(str, "0123456789\n\t\v\f\r "))
 		return (0);
-	*fov = ft_atoi(str) * M_PI / 180.;
+	*fov = atoi(str) * M_PI / 180.;
 	return (0 <= *fov && *fov <= 180);
 }
 

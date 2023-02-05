@@ -10,12 +10,13 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
 #include "ft_parser.h"
 #include "ft_window.h"
 #include "ft_maths.h"
 #include "debug.h"
 #include <stdio.h>
+
+char			*g_program_name;
 
 static int		ft_test_arg(int ac, char **av, char *arg)
 {
@@ -24,23 +25,12 @@ static int		ft_test_arg(int ac, char **av, char *arg)
 
 	if (ac == 2)
 		return (0);
-	len = ft_strlen(arg);
-	len1 = ft_strlen(av[2]);
-	if (len != len1 || ft_strncmp(arg, av[2], len))
+	len = strlen(arg);
+	len1 = strlen(av[2]);
+	if (len != len1 || strncmp(arg, av[2], len))
 		return (0);
 	return (1);
 }
-
-#ifndef BONUS
-
-static int		ft_issave(int ac, char **av)
-{
-	if (ft_test_arg(ac, av, "-save") || ft_test_arg(ac, av, "--save"))
-		return (1);
-	return (0);
-}
-
-#else
 
 static int		ft_issave(int ac, char **av)
 {
@@ -51,8 +41,6 @@ static int		ft_issave(int ac, char **av)
 	return (0);
 }
 
-#endif
-
 int				main(int ac, char **av)
 {
 	t_scene		*scene;
@@ -62,7 +50,7 @@ int				main(int ac, char **av)
 	if (ac == 1)
 		return (1);
 	scene = ft_init_scene();
-	g_program_name = ft_strrchr(av[0], '/') + 1;
+	g_program_name = strrchr(av[0], '/') + 1;
 	if (ft_parser(av[1], scene) <= 0)
 	{
 		ft_destroy_scene(scene);

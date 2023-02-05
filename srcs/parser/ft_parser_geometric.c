@@ -11,29 +11,7 @@
 /* ************************************************************************** */
 
 #include "ft_parser.h"
-#include "ft_printf.h"
 #include "ft_maths.h"
-
-#ifndef BONUS
-
-void		ft_parse_sphere(char *str, t_element *element)
-{
-	t_sphere	*result;
-
-	element->content = NULL;
-	if (!(result = (t_sphere *)malloc(sizeof(t_sphere))))
-		ft_print_error("Malloc failed", 0, 1);
-	if (!ft_read_coord(&str, result->origin, "Invalid coord for sphere",
-			result))
-		return ;
-	if (!ft_read_double(&str, &result->diameter, "Invalid diameter", result))
-		return ;
-	if (!ft_read_color(&str, &result->color, result))
-		return ;
-	element->content = result;
-}
-
-#else
 
 void		ft_parse_sphere(char *str, t_element *element)
 {
@@ -52,8 +30,6 @@ void		ft_parse_sphere(char *str, t_element *element)
 	ft_read_specular(&str, &result->spec_color, &result->shiny);
 	element->content = result;
 }
-
-#endif
 
 void		ft_parse_square(char *str, t_element *element)
 {
@@ -114,7 +90,7 @@ void		ft_parse_cylinder(char *str, t_element *element)
 		res))
 		return ;
 	ft_skip_separator(&str, " \t");
-	res->caps = !ft_strncmp("caps", str, max(ft_strlen(str), 4));
+	res->caps = !strncmp("caps", str, max(strlen(str), 4));
 	ft_vector_normalize(res->orient);
 	element->content = res;
 }

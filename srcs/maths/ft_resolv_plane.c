@@ -18,7 +18,7 @@ int		ft_resolv_plane(void *object, t_ray *ray, t_intersect *intersect)
 	t_vector	l0p0;
 
 	plane = (t_plane *)object;
-	ft_memcpy(intersect->normal, plane->normal, sizeof(t_vector));
+	memcpy(intersect->normal, plane->normal, sizeof(t_vector));
 	ft_vector_sub(l0p0, ray->origin, plane->coord);
 	intersect->param = -ft_vector_dot(l0p0, plane->normal) /
 						ft_vector_dot(ray->direct, plane->normal);

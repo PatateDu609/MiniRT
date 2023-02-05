@@ -51,13 +51,9 @@ double				min(double a, double b);
 double				max(double a, double b);
 int					sign(double a);
 
-# ifdef BONUS
-
 int					ft_resolv_circle(void *object, t_ray *ray,
 		t_intersect *intersect);
 int					ft_resolv_ellipsoid(void *object, t_ray *ray,
 		t_intersect *intersect);
-
-# endif
 
 #endif

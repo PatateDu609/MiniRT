@@ -13,72 +13,19 @@ PATH_OBJS			=	../objs
 ################################################################################
 #                              Name of sources files                           #
 ################################################################################
-SRCS_BASENAME		=	memset				\
-						bzero				\
-						memcpy				\
-						memccpy				\
-						memmove				\
-						memchr				\
-						memcmp				\
-						strlen				\
-						isalpha				\
-						isdigit				\
-						isalnum				\
-						isascii				\
-						isprint				\
-						toupper				\
-						tolower				\
-						strchr				\
-						strrchr				\
-						strcmp				\
-						strncmp				\
-						strlcpy				\
-						strlcat				\
-						strnstr				\
-						atoi				\
-						calloc				\
+SRCS_BASENAME		=	strcmp				\
 						strdup				\
 						substr				\
-						strjoin				\
-						strjoin_arr			\
 						strtrim				\
-						split				\
-						itoa				\
-						strmapi				\
-						putchar_fd			\
-						putstr_fd			\
-						putendl_fd			\
-						putnbr_fd			\
 						lstnew_bonus		\
-						lstadd_front_bonus	\
-						lstsize_bonus		\
 						lstlast_bonus		\
 						lstfirst_bonus		\
 						lstadd_back_bonus	\
 						lstdelone_bonus		\
 						lstclear_bonus		\
-						lstiter_bonus		\
-						lstmap_bonus		\
-						btree_apply_suffix	\
-						btree_apply_infix	\
-						btree_apply_prefix	\
-						btree_create_node	\
-						ternary				\
-						assign				\
 
 GNL_SRCS			=	get_next_line		\
 						get_next_line_utils
-
-PRINTF_SRCS			=	putptr		\
-						printf		\
-						putchar		\
-						putstr		\
-						putunsigned	\
-						flags		\
-						puthexa		\
-						putnbr		\
-						check_parse	\
-						nbr_utils
 
 ################################################################################
 #                             Commands and arguments                           #

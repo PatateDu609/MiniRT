@@ -17,17 +17,17 @@ static unsigned int	ft_trimedlen(const char *s1, const char *set)
 	unsigned int	size;
 	const char		*s;
 
-	size = ft_strlen(s1);
+	size = strlen(s1);
 	s = s1;
-	while (*s1 && ft_strchr(set, *s1))
+	while (*s1 && strchr(set, *s1))
 	{
 		s1++;
 		size--;
 	}
 	if (!*s1)
 		return (0);
-	s += ft_strlen(s);
-	while (s != (s1 + 1) && ft_strchr(set, *s))
+	s += strlen(s);
+	while (s != (s1 + 1) && strchr(set, *s))
 	{
 		s--;
 		size--;
@@ -46,9 +46,9 @@ char	*ft_strtrim(const char *s1, const char *set)
 	if (!set || !*set)
 		return (ft_strdup(s1));
 	size = ft_trimedlen(s1, set);
-	if (!ft_assign((void **)&result, (char *)malloc(size + 1)))
+	if (!(result = malloc(size + 1)))
 		return (NULL);
-	while (*s1 && ft_strchr(set, *s1))
+	while (*s1 && strchr(set, *s1))
 		s1++;
 	i = 0;
 	while (i < size)

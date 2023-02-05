@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "ft_parser.h"
-#include "ft_printf.h"
 
 int			ft_segment_len(char *line)
 {
@@ -45,23 +44,6 @@ char		*ft_parse_identifier(char **line)
 	return (NULL);
 }
 
-#ifndef BONUS
-
-void		ft_parse_line_2(void (*ft_parsing[20])(char *, t_element *))
-{
-	ft_parsing[FT_PARSE_RESOLUTION] = &ft_parse_resolution;
-	ft_parsing[FT_PARSE_AMBIENT_LIGHT] = &ft_parse_ambient_light;
-	ft_parsing[FT_PARSE_LIGHT] = &ft_parse_light;
-	ft_parsing[FT_PARSE_CAMERA] = &ft_parse_camera;
-	ft_parsing[FT_PARSE_SPHERE] = &ft_parse_sphere;
-	ft_parsing[FT_PARSE_SQUARE] = &ft_parse_square;
-	ft_parsing[FT_PARSE_PLANE] = &ft_parse_plane;
-	ft_parsing[FT_PARSE_CYLINDER] = &ft_parse_cylinder;
-	ft_parsing[FT_PARSE_TRIANGLE] = &ft_parse_triangle;
-}
-
-#else
-
 void		ft_parse_line_2(void (*ft_parsing[20])(char *, t_element *))
 {
 	ft_parsing[FT_PARSE_RESOLUTION] = &ft_parse_resolution;
@@ -77,8 +59,6 @@ void		ft_parse_line_2(void (*ft_parsing[20])(char *, t_element *))
 	ft_parsing[FT_PARSE_FILTER] = &ft_parse_filter;
 	ft_parsing[FT_PARSE_ELLIPSOID] = &ft_parse_ellipsoid;
 }
-
-#endif
 
 t_element	*ft_parse_line(char *line)
 {

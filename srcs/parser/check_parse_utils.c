@@ -42,7 +42,7 @@ int			ft_special_strchr(char *str, char *set)
 	if (set == NULL)
 		return (0);
 	while (*str)
-		if (!ft_strchr(set, *str++))
+		if (!strchr(set, *str++))
 			return (0);
 	return (1);
 }
@@ -52,20 +52,20 @@ double		ft_strtof(char *str)
 	double	result;
 	double	fract;
 
-	result = ft_atoi(str);
+	result = atoi(str);
 	while (*str && *str != '.')
 		str++;
 	if (*str != '.')
 		return (result);
 	str++;
-	fract = ft_atoi(str);
-	fract /= pow(10., ft_strlen(str));
+	fract = atoi(str);
+	fract /= pow(10., strlen(str));
 	result += fract;
 	return (result);
 }
 
 void		ft_skip_separator(char **str, char *separator)
 {
-	while (**str && ft_strchr(separator, **str))
+	while (**str && strchr(separator, **str))
 		*str += 1;
 }

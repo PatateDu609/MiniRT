@@ -31,10 +31,10 @@ static t_circle		*ft_create_circle(t_cylinder *cylinder, t_vector coord)
 	if (!(circle = (t_circle *)malloc(sizeof(t_circle))))
 		return (NULL);
 	circle->writable = 0;
-	ft_memcpy(&circle->diameter, &cylinder->diameter, sizeof(double));
-	ft_memcpy(circle->coord, coord, sizeof(t_vector));
-	ft_memcpy(circle->normal, cylinder->orient, sizeof(t_vector));
-	ft_memcpy(&circle->color, &cylinder->color, sizeof(int));
+	memcpy(&circle->diameter, &cylinder->diameter, sizeof(double));
+	memcpy(circle->coord, coord, sizeof(t_vector));
+	memcpy(circle->normal, cylinder->orient, sizeof(t_vector));
+	memcpy(&circle->color, &cylinder->color, sizeof(int));
 	return (circle);
 }
 

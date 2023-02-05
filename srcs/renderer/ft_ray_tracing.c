@@ -30,40 +30,6 @@ static void		ft_draw(t_data *data, int width, int height)
 	}
 }
 
-/*
-** #define THREAD_COUNT 16
-**
-** void multi_thread(t_data *data)
-** {
-** 	int i;
-** 	pthread_t thr[THREAD_COUNT];
-** 	t_thread thread[THREAD_COUNT];
-**
-** 	i = 0;
-** 	while (i < THREAD_COUNT)
-** 	{
-** 		thread[i].cur_thr = i;
-** 		ft_memcpy(&thread[i].scene, data, sizeof(t_data));
-** 		thread[i].scene.tr = i;
-** 		pthread_create(&thr[i], NULL, (void *)ft_ray_tracing, &thread[i]);
-** 		i++;
-** 	}
-** 	i = 0;
-** 	while (i < THREAD_COUNT)
-** 	{
-** 		pthread_join(thr[i], NULL);
-** 		i++;
-** 	}
-** }
-**
-** void ft_redraw_window(t_data *data)
-** {
-** 	// setup_rt(data);
-** 	multi_thread(data);
-** 	// mlx_put_image_to_window(data->mlx, data->win, data->img, 0, 0);
-** }
-*/
-
 void			ft_set_size(t_data *data, int *width, int *height)
 {
 	int screen_size[2];
@@ -75,8 +41,6 @@ void			ft_set_size(t_data *data, int *width, int *height)
 		*height = screen_size[1];
 }
 
-#ifndef BONUS
-
 void			ft_ray_tracing(t_data *data)
 {
 	int		s[2];
@@ -94,34 +58,7 @@ void			ft_ray_tracing(t_data *data)
 	}
 	else
 	{
-		if (!(data->img_addr = (unsigned int *)ft_calloc(s[0] * s[1], 4)))
-			return ;
-		ft_draw(data, s[0], s[1]);
-		ft_save(data->img_addr, s[0], s[1]);
-		free(data->img_addr);
-	}
-}
-
-#else
-
-void			ft_ray_tracing(t_data *data)
-{
-	int		s[2];
-	int		trash;
-
-	s[0] = data->scene->resol->width;
-	s[1] = data->scene->resol->height;
-	if (!data->target)
-	{
-		if (!(data->img_addr = (unsigned int *)mlx_get_data_addr(data->img,
-			&trash, &trash, &trash)))
-			return ;
-		ft_draw(data, s[0], s[1]);
-		mlx_put_image_to_window(data->mlx, data->win, data->img, 0, 0);
-	}
-	else
-	{
-		if (!(data->img_addr = (unsigned int *)ft_calloc(s[0] * s[1], 4)))
+		if (!(data->img_addr = (unsigned int *)calloc(s[0] * s[1], 4)))
 			return ;
 		ft_draw(data, s[0], s[1]);
 		if (data->target == 1)
@@ -131,5 +68,3 @@ void			ft_ray_tracing(t_data *data)
 		free(data->img_addr);
 	}
 }
-
-#endif

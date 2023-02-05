@@ -14,6 +14,9 @@
 # define FT_DEFS_H
 
 # include "libft.h"
+# include <stdio.h>
+# include <strings.h>
+# include <string.h>
 
 # ifndef M_PI
 #  define M_PI 3.14159265358979323846264338327950288
@@ -28,7 +31,7 @@ typedef double		t_hvector[4];
 typedef double		t_matrix33[3][3];
 typedef double		t_matrix44[4][4];
 
-char				*g_program_name;
+extern char			*g_program_name;
 
 # define LIGHT_INTENSITY	156250
 # define MAX_THREADS		16

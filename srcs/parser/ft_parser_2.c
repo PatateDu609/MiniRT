@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "ft_parser.h"
-#include "ft_printf.h"
 
 int			ft_parser(char *scene_filename, t_scene *scene)
 {
@@ -24,7 +23,7 @@ int			ft_parser(char *scene_filename, t_scene *scene)
 	result = 1;
 	while (get_next_line(fd, &to_parse))
 	{
-		if (ft_strlen(to_parse) > 0 && (element = ft_parse_line(to_parse)))
+		if (strlen(to_parse) > 0 && (element = ft_parse_line(to_parse)))
 		{
 			if ((result = ft_add_element(scene, element)) == 0 || result == -1)
 			{

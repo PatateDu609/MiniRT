@@ -10,15 +10,14 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
 #include "ft_parser.h"
 
 void	ft_print_error(char *str, int sys, int should_exit)
 {
 	if (sys)
-		ft_printf("Error %s: %s\n", g_program_name, strerror(errno));
+		printf("Error %s: %s\n", g_program_name, strerror(errno));
 	else
-		ft_printf("Error %s: %s\n", g_program_name, str);
+		printf("Error %s: %s\n", g_program_name, str);
 	if (should_exit)
 		exit(1);
 }

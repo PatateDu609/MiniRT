@@ -14,7 +14,6 @@
 # define FT_RENDERER_H
 
 # include "ft_parser.h"
-# include "ft_printf.h"
 # include "ft_maths.h"
 # include "mlx.h"
 # include <pthread.h>
@@ -44,7 +43,6 @@ int				ft_hex_mult(unsigned int hex, double lambda[3]);
 void			ft_hexa_to_rgb(unsigned int hex, unsigned int *r,
 		unsigned int *g, unsigned int *b);
 
-# ifdef BONUS
 
 unsigned int	ft_filter(int filter, unsigned int color);
 
@@ -73,7 +71,5 @@ unsigned int	ft_specular(t_vector cp, t_light *light,
 				t_intersect *intersect);
 
 void			ft_save_png(unsigned int *data, int width, int height);
-
-# endif
 
 #endif

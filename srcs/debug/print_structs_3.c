@@ -27,7 +27,7 @@ void	ft_print_square(t_element *element)
 	printf("Orientation : ");
 	ft_print_vector(square->normal);
 	printf("Size = %lf\n", square->size);
-	ft_printf("Color : %X\n", square->color);
+	printf("Color : %X\n", square->color);
 }
 
 void	ft_print_sphere(t_element *element)
@@ -43,7 +43,7 @@ void	ft_print_sphere(t_element *element)
 	printf("Coordinates of the center : ");
 	ft_print_vector(sphere->origin);
 	printf("Diameter : %lf\n", sphere->diameter);
-	ft_printf("Color : %X\n", sphere->color);
+	printf("Color : %X\n", sphere->color);
 }
 
 void	ft_print_camera(t_element *element)
@@ -80,7 +80,7 @@ void	ft_print_light(t_element *element)
 		printf("Coord : ");
 		ft_print_vector(light->coord);
 	}
-	ft_printf("Color : %X\n", light->color);
+	printf("Color : %X\n", light->color);
 }
 
 void	ft_print_ambient_light(t_element *element)

@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "ft_parser.h"
-#include "ft_printf.h"
 
 void		ft_parse_resolution(char *str, t_element *element)
 {
@@ -20,12 +19,12 @@ void		ft_parse_resolution(char *str, t_element *element)
 	element->content = NULL;
 	if (!(result = (t_resolution *)malloc(sizeof(t_resolution))))
 		ft_print_error("Malloc failed", 0, 1);
-	result->width = ft_atoi(str);
+	result->width = atoi(str);
 	str += ft_segment_len(str);
 	ft_skip_separator(&str, " \t");
 	if (!*str)
 		ft_print_error("Two integers needed for Resolution type", 0, 1);
-	result->height = ft_atoi(str);
+	result->height = atoi(str);
 	element->content = result;
 }
 
@@ -55,11 +54,11 @@ void		ft_parse_filter(char *str, t_element *element)
 	if (!(res = ft_strtrim(str, "\t ")))
 		return ;
 	*result = NO_FILTER;
-	if (!ft_strncmp(res, "none", ft_strlen(res) < 4 ? 4 : ft_strlen(res)))
+	if (!strncmp(res, "none", strlen(res) < 4 ? 4 : strlen(res)))
 		*result = NO_FILTER;
-	if (!ft_strncmp(res, "grayscale", ft_strlen(res) < 9 ? 9 : ft_strlen(res)))
+	if (!strncmp(res, "grayscale", strlen(res) < 9 ? 9 : strlen(res)))
 		*result = FILTER_GRAYSCALE;
-	if (!ft_strncmp(res, "sepia", ft_strlen(res) < 5 ? 5 : ft_strlen(res)))
+	if (!strncmp(res, "sepia", strlen(res) < 5 ? 5 : strlen(res)))
 		*result = FILTER_SEPIA;
 	free(res);
 	element->content = result;

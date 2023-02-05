@@ -32,7 +32,7 @@ int				ft_intersect(t_scene *scene, t_ray *ray, t_intersect *intersect)
 			has_inter = 1;
 			min_t = local.param;
 			if (intersect)
-				ft_memcpy(intersect, &local, sizeof(t_intersect));
+				memcpy(intersect, &local, sizeof(t_intersect));
 		}
 		objects = objects->next;
 	}
@@ -85,8 +85,6 @@ void			ft_specular_2(t_vector view,
 ** n[0] = view / n[1] = reflect / n[2] = lp / n[3] = intensity
 */
 
-#ifdef BONUS
-
 unsigned int	ft_specular(t_vector cp, t_light *light, t_intersect *intersect)
 {
 	double			shiny;
@@ -124,7 +122,7 @@ unsigned int	ft_color(t_scene *scene, t_intersect *intersect)
 
 	current = ft_lstfirst(scene->lights);
 	fcolor = ft_ambient(scene->ambient, intersect->element);
-	ft_memcpy(cam_pos, ((t_camera *)ft_get_element(scene->cameras))->view,
+	memcpy(cam_pos, ((t_camera *)ft_get_element(scene->cameras))->view,
 		sizeof(t_vector));
 	while (current)
 	{
@@ -138,5 +136,3 @@ unsigned int	ft_color(t_scene *scene, t_intersect *intersect)
 	}
 	return (fcolor);
 }
-
-#endif

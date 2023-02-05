@@ -13,33 +13,6 @@
 #include "ft_maths.h"
 #include "debug.h"
 
-#ifndef BONUS
-
-int		ft_resolv_object(t_element *object, t_ray *ray, t_intersect *intersect)
-{
-	int		id;
-	int		(*ft_resolv[7])(void *, t_ray *, t_intersect *);
-	int		result;
-
-	if ((id = ft_check_id(object->id)) == FT_PARSE_DEFAULT ||
-		id == FT_PARSE_LIGHT ||
-		id == FT_PARSE_RESOLUTION ||
-		id == FT_PARSE_AMBIENT_LIGHT ||
-		id == FT_PARSE_CAMERA)
-		return (0);
-	ft_resolv[FT_PARSE_SPHERE - 4] = ft_resolv_sphere;
-	ft_resolv[FT_PARSE_PLANE - 4] = ft_resolv_plane;
-	ft_resolv[FT_PARSE_CYLINDER - 4] = ft_resolv_cylinder;
-	ft_resolv[FT_PARSE_TRIANGLE - 4] = ft_resolv_triangle;
-	ft_resolv[FT_PARSE_SQUARE - 4] = ft_resolv_square;
-	result = ft_resolv[id - 4](object->content, ray, intersect);
-	if (result)
-		intersect->element = object;
-	return (result);
-}
-
-#else
-
 int		ft_resolv_object(t_element *object, t_ray *ray, t_intersect *intersect)
 {
 	int		id;
@@ -64,5 +37,3 @@ int		ft_resolv_object(t_element *object, t_ray *ray, t_intersect *intersect)
 		intersect->element = object;
 	return (result);
 }
-
-#endif

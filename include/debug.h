@@ -14,7 +14,6 @@
 # define DEBUG_H
 
 # include "ft_parser.h"
-# include "ft_printf.h"
 # include "ft_window.h"
 # include <stdio.h>
 

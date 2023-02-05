@@ -12,21 +12,6 @@
 
 #include "ft_parser.h"
 
-#ifndef BONUS
-
-void		ft_add_geometrical(t_scene *scene, t_element *element)
-{
-	t_list		*new;
-
-	if (!element)
-		return ;
-	if (!(new = ft_lstnew(element)))
-		return ;
-	ft_lstadd_back(&scene->geometricals, new);
-}
-
-#else
-
 void		ft_add_geometrical(t_scene *scene, t_element *element)
 {
 	t_list		*new;
@@ -39,8 +24,6 @@ void		ft_add_geometrical(t_scene *scene, t_element *element)
 	if (ft_check_id(element->id) == FT_PARSE_CYLINDER && element->content)
 		ft_add_caps(scene, element->content);
 }
-
-#endif
 
 void		ft_add_light(t_scene *scene, t_element *light)
 {

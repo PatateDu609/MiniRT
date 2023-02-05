@@ -79,8 +79,8 @@ void			ft_save(unsigned int *data, int width, int height)
 
 	if ((fd = open("minirt.bmp", O_CREAT | O_WRONLY | O_TRUNC, 0644)) == -1)
 		return ;
-	ft_memset(header, 0, 14);
-	ft_memset(bmpfileinfo, 0, 40);
+	memset(header, 0, 14);
+	memset(bmpfileinfo, 0, 40);
 	ft_header(header, width, height);
 	ft_bmpfileinfo(bmpfileinfo, width, height);
 	write(fd, header, 14);

@@ -22,6 +22,6 @@ void	ft_print_resolution(t_element *element)
 		return ;
 	}
 	resolution = (t_resolution *)element->content;
-	ft_printf("width = %d\n", resolution->width);
-	ft_printf("height = %d\n", resolution->height);
+	printf("width = %d\n", resolution->width);
+	printf("height = %d\n", resolution->height);
 }

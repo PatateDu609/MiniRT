@@ -20,10 +20,11 @@ char	*ft_substr(const char *s, unsigned int start, size_t len)
 
 	if (!s)
 		return (NULL);
-	if (start >= ft_strlen(s))
+	if (start >= strlen(s))
 		return (ft_strdup(""));
-	size = ft_ternaryul(ft_strlen(s + start) > len, len, ft_strlen(s + start));
-	if (!ft_assign((void **)&result, (char *)malloc(sizeof(char) * (size + 1))))
+	size = strlen(s + start);
+	size = size > len ? len : size;
+	if (!(result = malloc(sizeof(char) * (size + 1))))
 		return (NULL);
 	i = 0;
 	while (i < size && *s)

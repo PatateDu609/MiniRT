@@ -20,9 +20,9 @@ void	ft_look_at_2(t_matrix44 ctw, t_vector forward,
 	ctw[1][3] = 0;
 	ctw[2][3] = 0;
 	ctw[3][3] = 1;
-	ft_memcpy(ctw[0], right, sizeof(t_vector));
-	ft_memcpy(ctw[1], up, sizeof(t_vector));
-	ft_memcpy(ctw[2], forward, sizeof(t_vector));
+	memcpy(ctw[0], right, sizeof(t_vector));
+	memcpy(ctw[1], up, sizeof(t_vector));
+	memcpy(ctw[2], forward, sizeof(t_vector));
 }
 
 void	ft_look_at(t_matrix44 ctw, t_camera *camera)
@@ -42,7 +42,7 @@ void	ft_look_at(t_matrix44 ctw, t_camera *camera)
 	ft_vector_cross(right, tmp, forward);
 	ft_vector_cross(up, forward, right);
 	ft_look_at_2(ctw, forward, right, up);
-	ft_memcpy(ctw[3], camera->view, sizeof(t_vector));
+	memcpy(ctw[3], camera->view, sizeof(t_vector));
 }
 
 void	ft_mult_dir_matrix(t_matrix44 ctw, t_vector dir)
@@ -57,7 +57,7 @@ void	ft_mult_vec_matrix(t_matrix44 ctw, t_vector origin)
 	t_hvector	hdirect;
 
 	hdirect[3] = 1;
-	ft_memcpy(hdirect, origin, sizeof(t_vector));
+	memcpy(hdirect, origin, sizeof(t_vector));
 	hdirect[0] = origin[0] * ctw[0][0] + origin[1] * ctw[1][0] + origin[2]
 		* ctw[2][0] + ctw[3][0];
 	hdirect[1] = origin[0] * ctw[0][1] + origin[1] * ctw[1][1] + origin[2]

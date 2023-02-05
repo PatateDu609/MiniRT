@@ -19,13 +19,13 @@ void			ft_print_vector(t_vector vector)
 
 char			*ft_translate_id_2(char *id)
 {
-	if (!ft_strncmp(id, "sq", 2))
+	if (!strncmp(id, "sq", 2))
 		return ("Square");
-	else if (!ft_strncmp(id, "pl", 2))
+	else if (!strncmp(id, "pl", 2))
 		return ("Plane");
-	else if (!ft_strncmp(id, "cy", 2))
+	else if (!strncmp(id, "cy", 2))
 		return ("Cylinder");
-	else if (!ft_strncmp(id, "tr", 2))
+	else if (!strncmp(id, "tr", 2))
 		return ("Triangle");
 	else
 		return ("Invalid identifier");
@@ -35,18 +35,18 @@ char			*ft_translate_id(char *id)
 {
 	size_t len;
 
-	len = ft_strlen(id);
-	if (len == 1 && !ft_strncmp(id, "R", 1))
+	len = strlen(id);
+	if (len == 1 && !strncmp(id, "R", 1))
 		return ("Resolution");
-	else if (len == 1 && !ft_strncmp(id, "A", 1))
+	else if (len == 1 && !strncmp(id, "A", 1))
 		return ("Ambient light");
-	else if (len == 1 && !ft_strncmp(id, "l", 1))
+	else if (len == 1 && !strncmp(id, "l", 1))
 		return ("Light");
-	else if (len == 1 && !ft_strncmp(id, "c", 1))
+	else if (len == 1 && !strncmp(id, "c", 1))
 		return ("Camera");
-	else if (!ft_strncmp(id, "sp", 2))
+	else if (!strncmp(id, "sp", 2))
 		return ("Sphere");
-	else if (!ft_strncmp(id, "sq", 2))
+	else if (!strncmp(id, "sq", 2))
 		return ("Square");
 	else
 		return (ft_translate_id_2(id));
@@ -66,7 +66,7 @@ void			ft_print_plane(t_element *element)
 	ft_print_vector(plane->coord);
 	printf("Orientation : ");
 	ft_print_vector(plane->normal);
-	ft_printf("Color : %X\n", plane->color);
+	printf("Color : %X\n", plane->color);
 }
 
 void			ft_print_element(t_element *element)
@@ -75,10 +75,10 @@ void			ft_print_element(t_element *element)
 
 	if (!element)
 	{
-		ft_printf("Invalid element !\n");
+		printf("Invalid element !\n");
 		return ;
 	}
-	ft_printf("type : %s at %p\n", ft_translate_id(element->id), element);
+	printf("type : %s at %p\n", ft_translate_id(element->id), element);
 	ft_print[FT_PARSE_RESOLUTION] = ft_print_resolution;
 	ft_print[FT_PARSE_AMBIENT_LIGHT] = ft_print_ambient_light;
 	ft_print[FT_PARSE_LIGHT] = ft_print_light;

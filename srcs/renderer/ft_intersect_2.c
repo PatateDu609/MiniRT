@@ -59,36 +59,9 @@ unsigned int	ft_shadow(t_scene *scene, t_light *light, t_intersect *inter)
 	ft_vector_mult_lambda(ray.origin, inter->normal, 0.0001);
 	ft_vector_add(ray.origin, ray.origin, inter->pos);
 	ft_vector_sub(l_p, light->coord, inter->pos);
-	ft_memcpy(ray.direct, l_p, sizeof(t_vector));
+	memcpy(ray.direct, l_p, sizeof(t_vector));
 	ft_vector_normalize(ray.direct);
 	has_inter_light = ft_intersect(scene, &ray, &linter);
 	return (!(has_inter_light && linter.param * linter.param <
 		ft_vector_norm2(l_p)));
 }
-
-#ifndef BONUS
-
-unsigned int	ft_color(t_scene *scene, t_intersect *intersect)
-{
-	t_list			*current;
-	t_light			*light;
-	unsigned int	color;
-	unsigned int	fcolor;
-	t_vector		cam_pos;
-
-	current = ft_lstfirst(scene->lights);
-	fcolor = ft_ambient(scene->ambient, intersect->element);
-	ft_memcpy(cam_pos, ((t_camera *)ft_get_element(scene->cameras))->view,
-		sizeof(t_vector));
-	while (current)
-	{
-		light = (t_light *)ft_get_element(current);
-		color = ft_lambertian(light, intersect);
-		fcolor = ft_add_color(fcolor, color * ft_shadow(scene, light,
-				intersect));
-		current = current->next;
-	}
-	return (fcolor);
-}
-
-#endif

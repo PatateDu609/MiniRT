@@ -16,25 +16,25 @@ int			ft_check_id_2(char *identifier, size_t len)
 {
 	if (len == 0 || len > 2)
 		return (FT_PARSE_DEFAULT);
-	if (len == 1 && !ft_strncmp(identifier, "R", 1))
+	if (len == 1 && !strncmp(identifier, "R", 1))
 		return (FT_PARSE_RESOLUTION);
-	else if (len == 1 && !ft_strncmp(identifier, "A", 1))
+	else if (len == 1 && !strncmp(identifier, "A", 1))
 		return (FT_PARSE_AMBIENT_LIGHT);
-	else if (len == 1 && !ft_strncmp(identifier, "F", 1))
+	else if (len == 1 && !strncmp(identifier, "F", 1))
 		return (FT_PARSE_FILTER);
-	else if (len == 1 && !ft_strncmp(identifier, "l", 1))
+	else if (len == 1 && !strncmp(identifier, "l", 1))
 		return (FT_PARSE_LIGHT);
-	else if (len == 1 && !ft_strncmp(identifier, "c", 1))
+	else if (len == 1 && !strncmp(identifier, "c", 1))
 		return (FT_PARSE_CAMERA);
-	else if (!ft_strncmp(identifier, "sp", 2))
+	else if (!strncmp(identifier, "sp", 2))
 		return (FT_PARSE_SPHERE);
-	else if (!ft_strncmp(identifier, "sq", 2))
+	else if (!strncmp(identifier, "sq", 2))
 		return (FT_PARSE_SQUARE);
-	else if (!ft_strncmp(identifier, "pl", 2))
+	else if (!strncmp(identifier, "pl", 2))
 		return (FT_PARSE_PLANE);
-	else if (!ft_strncmp(identifier, "cy", 2))
+	else if (!strncmp(identifier, "cy", 2))
 		return (FT_PARSE_CYLINDER);
-	else if (!ft_strncmp(identifier, "tr", 2))
+	else if (!strncmp(identifier, "tr", 2))
 		return (FT_PARSE_TRIANGLE);
 	else
 		return (-1);
@@ -45,11 +45,11 @@ int			ft_check_id(char *identifier)
 	size_t	len;
 	int		check;
 
-	len = ft_strlen((const char*)identifier);
+	len = strlen((const char*)identifier);
 	check = ft_check_id_2(identifier, len);
-	if (!ft_strncmp(identifier, "ci", 2))
+	if (!strncmp(identifier, "ci", 2))
 		return (FT_PARSE_CIRCLE);
-	else if (!ft_strncmp(identifier, "el", 2))
+	else if (!strncmp(identifier, "el", 2))
 		return (FT_PARSE_ELLIPSOID);
 	else if (check == -1)
 		return (FT_PARSE_DEFAULT);
@@ -65,13 +65,13 @@ int			ft_check_color(char *str, unsigned int *color)
 
 	if (!ft_count_color_fields(str))
 		return (0);
-	red = ft_atoi(str);
+	red = atoi(str);
 	ft_skip_separator(&str, "0123456789 \t");
 	ft_skip_separator(&str, ",");
-	green = ft_atoi(str);
+	green = atoi(str);
 	ft_skip_separator(&str, "0123456789 \t");
 	ft_skip_separator(&str, ",");
-	blue = ft_atoi(str);
+	blue = atoi(str);
 	*color = red << 16 | green << 8 | blue;
 	return (0 <= red && red <= 255
 			&& 0 <= green && green <= 255
@@ -96,7 +96,7 @@ int			ft_check_vector(char *str, int interval, t_vector vector)
 	i = 0;
 	while (i < 3)
 	{
-		current = ft_substr(str, 0, ft_strchr(str, ',') - str);
+		current = ft_substr(str, 0, strchr(str, ',') - str);
 		vector[i] = ft_strtof(current);
 		ft_skip_separator(&str, "0123456789. -\t");
 		ft_skip_separator(&str, ",");

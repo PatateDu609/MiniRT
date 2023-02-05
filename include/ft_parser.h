@@ -70,14 +70,10 @@ int					ft_parser(char *scene_filename, t_scene *scene);
 
 void				ft_print_error(char *str, int sys, int block);
 
-# ifdef BONUS
-
 void				ft_read_specular(char **s, unsigned int *col, double *shin);
 void				ft_add_caps(t_scene *scene, t_cylinder *cylinder);
 void				ft_parse_circle(char *str, t_element *element);
 void				ft_parse_ellipsoid(char *str, t_element *element);
 void				ft_parse_filter(char *str, t_element *element);
-
-# endif
 
 #endif
