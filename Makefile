@@ -74,7 +74,7 @@ MATHS_SRCS			=	ft_vector_normalize		\
 						ft_vector_cross			\
 						ft_ray_point
 
-WINDOW_SRCS			=	ft_window						\
+WINDOW_SRCS			=	ft_window				\
 
 PARSER_SRCS			=	ft_parser					\
 						ft_parser_2					\
@@ -115,10 +115,7 @@ GCC					=	gcc
 CFLAGS				=	-I$(PATH_INCLUDES) -I$(LIBATTOPNG_PATH) -g3
 LDFLAGS				=	-L$(PATH_LIBS) -lft -lm
 
-# DEBUG LDFLAGS :
 LDFLAGS				+=	-g3 -ggdb
-# IF SYSTEM ON LINUX, uncomment following:
-# LDFLAGS				+=	-fsanitize=leak
 
 ################################################################################
 #                         DO NOT MODIFY BELOW THIS POINT                       #

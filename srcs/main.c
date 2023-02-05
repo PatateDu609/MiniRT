@@ -18,25 +18,26 @@
 
 char			*g_program_name;
 
-static int		ft_test_arg(int ac, char **av, char *arg)
+static int ft_usage(void)
 {
-	int		len;
-	int		len1;
-
-	if (ac == 2)
-		return (0);
-	len = strlen(arg);
-	len1 = strlen(av[2]);
-	if (len != len1 || strncmp(arg, av[2], len))
-		return (0);
+	fprintf(stderr, "Usage: %s <scene .rt> [-save/-png]", g_program_name);
+	exit(1);
 	return (1);
 }
 
-static int		ft_issave(int ac, char **av)
+static int get_target(int ac, char **av)
 {
-	if (ft_test_arg(ac, av, "-png"))
-		return (1);
-	return 0;
+	if (ac == 2)
+		return 0;
+
+	char *arg = av[2];
+
+	if (!strncmp(arg, "-save", 5))
+		return 0;
+	if (!strncmp(arg, "-png", 4))
+		return 1;
+
+	return -1;
 }
 
 int				main(int ac, char **av)
@@ -45,10 +46,12 @@ int				main(int ac, char **av)
 	char		*e;
 
 	e = "A scene needs at least a camera, an ambiance light and a resolution";
-	if (ac == 1)
-		return (1);
-	int issave = ft_issave(ac, av);
+	if (!(ac == 2 || ac == 3))
+		return ft_usage();
+	int target = get_target(ac, av);
 
+	if (target < 0)
+		return ft_usage();
 
 	scene = ft_init_scene();
 	g_program_name = strrchr(av[0], '/') + 1;
@@ -64,7 +67,7 @@ int				main(int ac, char **av)
 		ft_destroy_scene(scene);
 		ft_print_error(e, 0, 1);
 	}
-	ft_render(scene, issave);
+	ft_render(scene, target);
 	ft_destroy_scene(scene);
 	return (0);
 }

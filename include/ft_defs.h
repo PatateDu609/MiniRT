@@ -251,9 +251,6 @@ typedef struct		s_key_mode
 
 typedef struct		s_data
 {
-	void			*mlx;
-	void			*win;
-	void			*img;
 	unsigned int	*img_addr;
 	int				target;
 	int				tr;

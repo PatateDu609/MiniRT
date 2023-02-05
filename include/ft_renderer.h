@@ -19,7 +19,6 @@
 
 void			ft_ray_tracing(t_data *data);
 void			ft_draw_pixel(t_data *data, int pixel_coord[2], int w, int h);
-void			ft_redraw_window(t_data *data);
 void			ft_save(unsigned int *data, int width, int height);
 int				ft_intersect(t_scene *scene, t_ray *ray, t_intersect *inter);
 
