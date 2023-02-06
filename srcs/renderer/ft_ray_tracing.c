@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_ray_tracing.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rbourgea <rbourgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gboucett <gboucett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/25 14:54:12 by teyber            #+#    #+#             */
-/*   Updated: 2020/06/23 22:58:06 by rbourgea         ###   ########.fr       */
+/*   Updated: 2023/02/06 10:29:35 by gboucett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ static void		ft_draw(t_data *data, int width, int height)
 void			ft_ray_tracing(t_data *data)
 {
 	int		s[2];
-	int		trash;
 
 	s[0] = data->scene->resol->width;
 	s[1] = data->scene->resol->height;

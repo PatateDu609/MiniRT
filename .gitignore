@@ -3,3 +3,6 @@ miniRT
 **/*.a
 **/*.o
 *.bmp
+.gitignore
+
+*.png

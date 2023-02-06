@@ -112,7 +112,7 @@ SRCS_BASENAME		+=	main			\
 ################################################################################
 RM					=	rm -f
 GCC					=	gcc
-CFLAGS				=	-I$(PATH_INCLUDES) -I$(LIBATTOPNG_PATH) -g3
+CFLAGS				=	-I$(PATH_INCLUDES) -I$(LIBATTOPNG_PATH) -g3 -Wall -Werror -Wextra
 LDFLAGS				=	-L$(PATH_LIBS) -lft -lm
 
 LDFLAGS				+=	-g3 -ggdb

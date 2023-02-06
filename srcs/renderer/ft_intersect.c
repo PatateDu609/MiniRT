@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_intersect.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rbourgea <rbourgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gboucett <gboucett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/11 17:04:45 by rbourgea          #+#    #+#             */
-/*   Updated: 2020/06/23 23:03:00 by rbourgea         ###   ########.fr       */
+/*   Updated: 2023/02/06 10:28:36 by gboucett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ unsigned int	ft_specular(t_vector cp, t_light *light, t_intersect *intersect)
 {
 	double			shiny;
 	t_vector		n[4];
-	unsigned	int	rgb[3];
+	unsigned	int	rgb[4];
 	t_vector		real_light;
 
 	shiny = ft_get_object_shiny(intersect->element);
