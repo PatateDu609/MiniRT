@@ -33,3 +33,7 @@ MiniRT command:
 ./miniRT scene.rt -save # render scene as bmp file
 ./miniRT scene.rt -png # render scene as png file
 ```
+
+## File description
+
+Please check the [scene](https://github.com/PatateDu609/MiniRT/tree/master/scenes) folder's readme.
